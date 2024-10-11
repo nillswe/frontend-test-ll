@@ -1,6 +1,8 @@
 import type {Metadata} from 'next'
 import {Roboto} from 'next/font/google'
+
 import './globals.css'
+import {Header, Breadcrumb} from '@/app/_components'
 
 const roboto = Roboto({subsets: ['latin'], preload: true, weight: ['400', '700']})
 
@@ -16,7 +18,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br' className='light'>
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <main className='flex h-auto w-full flex-col'>
+          <Header />
+          <div className='mx-auto flex w-full max-w-[1300px] flex-col justify-between'>
+            <Breadcrumb />
+            {children}
+          </div>
+        </main>
+      </body>
     </html>
   )
 }

@@ -1,5 +1,6 @@
 import {Heart, User} from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const Header = () => {
   return (
@@ -7,10 +8,10 @@ export const Header = () => {
       <div className='mx-auto flex w-full max-w-[1300px] items-center justify-between'>
         <Image src='/assets/brand/netshoes.svg' width={160} height={25} alt='Netshoes logo' />
         <div className='flex gap-10 text-white'>
-          <button className='flex gap-1'>
+          <Link href='wishlist' className='flex gap-1'>
             <Heart />
             <span className=''>Wishlist</span>
-          </button>
+          </Link>
 
           <button>
             <User />
