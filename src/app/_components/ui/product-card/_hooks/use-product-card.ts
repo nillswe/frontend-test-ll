@@ -16,8 +16,16 @@ export const useProductCard = () => {
     localCache.set(CACHE_WISHLIST, filteredProducts)
   }
 
+  const checkIsOnWishlist = (productId: number) => {
+    const cachedProducts = localCache.get<ProductModel[]>(CACHE_WISHLIST) ?? []
+    if (!cachedProducts) return false
+
+    return cachedProducts.some(product => product.id === productId)
+  }
+
   return {
     addProductToWishlist,
     removeProductFromWishlist,
+    checkIsOnWishlist,
   }
 }

@@ -11,8 +11,8 @@ type Props = {
 }
 
 export const WishlistButton = ({product}: Props) => {
-  const {addProductToWishlist, removeProductFromWishlist} = useProductCard()
-  const isOnWishlist = false
+  const {addProductToWishlist, removeProductFromWishlist, checkIsOnWishlist} = useProductCard()
+  const isOnWishlist = checkIsOnWishlist(product.id)
 
   const toggleWishlist = isOnWishlist ? removeProductFromWishlist : addProductToWishlist
 
