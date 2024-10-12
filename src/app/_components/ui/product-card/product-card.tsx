@@ -28,8 +28,8 @@ export const ProductCard = ({product}: Props) => {
       <div className='mt-1'>
         <div className='flex items-center gap-1'>
           <span className='flex'>
-            {Array.from({length: fullStars}).map((_, index) => {
-              return <Star key={index} className='text-yellow-500' fill='#ebb305' size={18} />
+            {Array.from({length: fullStars}, (_, i) => i + 1).map(key => {
+              return <Star key={key} className='text-yellow-500' fill='#ebb305' size={18} />
             })}
             {hasHalfStar && <StarHalf className='text-yellow-500' fill='#ebb305' size={18} />}
           </span>
