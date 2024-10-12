@@ -2,6 +2,7 @@ import {Star} from 'lucide-react'
 import Image from 'next/image'
 
 import {ProductModel} from '@/types/models/products.model'
+import {formatNumberToCurrency} from '@/utils'
 
 type Props = {
   product: ProductModel
@@ -34,8 +35,10 @@ export const ProductCard = ({product}: Props) => {
         </div>
 
         <div className='mt-2 flex flex-col'>
-          <span className='text-sm text-gray-500 line-through'>{product.oldPrice}</span>
-          <span className='text-primary text-xl'>{product.price}</span>
+          <span className='text-sm text-gray-500 line-through'>
+            {formatNumberToCurrency(product.oldPrice)}
+          </span>
+          <span className='text-primary text-xl'>{formatNumberToCurrency(product.price)}</span>
         </div>
       </div>
     </article>
