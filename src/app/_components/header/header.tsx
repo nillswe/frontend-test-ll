@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const Header = () => {
   return (
-    <header className='flex h-20 w-full items-center bg-primary'>
+    <header className='flex h-20 w-full items-center bg-primary px-3'>
       <div className='mx-auto flex w-full max-w-[1300px] items-center justify-between'>
         <Link href='/'>
           <Image src='/assets/brand/netshoes.svg' width={160} height={25} alt='Netshoes logo' />

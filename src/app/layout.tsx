@@ -22,7 +22,7 @@ export default function RootLayout({
         <Providers>
           <main className='flex h-auto w-full flex-col'>
             <Header />
-            <div className='mx-auto flex w-full max-w-[1300px] flex-col justify-between'>
+            <div className='mx-auto flex w-full max-w-[1300px] flex-col justify-between px-3'>
               <Breadcrumb />
               {children}
             </div>

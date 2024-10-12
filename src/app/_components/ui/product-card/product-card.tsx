@@ -23,7 +23,7 @@ export const ProductCard = ({product}: Props) => {
           src={product.pictureUrl}
           width={300}
           height={300}
-          className='rounded-md object-cover'
+          className='w-full rounded-md object-cover'
           alt={product.name}
         />
 

@@ -4,7 +4,7 @@ import {Info} from 'lucide-react'
 import {observer} from 'mobx-react-lite'
 import Link from 'next/link'
 
-import {ProductCard} from '@/app/_components/ui'
+import {ProductsGrid, ProductCard} from '@/app/_components/ui'
 import {useRootStore} from '@/app/_hooks/use-root-store'
 
 const Page = observer(() => {
@@ -12,7 +12,7 @@ const Page = observer(() => {
   const products = wishlistStore.wishlist
 
   return (
-    <div className='mt-5  w-full'>
+    <div className='mt-5 w-full'>
       {products.length === 0 && (
         <div className='flex w-full flex-col items-center gap-4'>
           <p
@@ -29,11 +29,11 @@ const Page = observer(() => {
       )}
 
       {products.length > 0 && (
-        <section className='mb-10 grid w-full grid-cols-4 gap-5'>
+        <ProductsGrid>
           {products.map((product, index) => {
             return <ProductCard key={index} product={product} />
           })}
-        </section>
+        </ProductsGrid>
       )}
     </div>
   )
