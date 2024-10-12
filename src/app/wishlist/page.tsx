@@ -12,7 +12,7 @@ const Page = observer(() => {
   const products = wishlistStore.wishlist
 
   return (
-    <div className='mt-5 w-full'>
+    <div className='mt-5  w-full'>
       {products.length === 0 && (
         <div className='flex w-full flex-col items-center gap-4'>
           <p

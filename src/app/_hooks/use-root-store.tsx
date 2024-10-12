@@ -1,6 +1,6 @@
 'use client'
 
-import {createContext, PropsWithChildren, ReactNode, useContext} from 'react'
+import {createContext, ReactNode, useContext} from 'react'
 
 import {RootStore} from '@/app/_stores/root-store'
 import {ProductModel} from '@/types/models/products.model'

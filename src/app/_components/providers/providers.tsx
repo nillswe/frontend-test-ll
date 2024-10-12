@@ -1,10 +1,16 @@
 'use client'
 
-import {RootStoreProvider} from '@/app/_hooks/use-root-store'
+import dynamic from 'next/dynamic'
+import {ReactNode} from 'react'
+
 import {CACHE_WISHLIST} from '@/config/tokens'
 import {localCache} from '@/services/local-cache/local-cache'
 import {ProductModel} from '@/types/models/products.model'
-import {ReactNode} from 'react'
+
+const RootStoreProvider = dynamic(
+  () => import('@/app/_hooks/use-root-store').then(c => c.RootStoreProvider),
+  {ssr: false},
+)
 
 type Props = {
   children: ReactNode

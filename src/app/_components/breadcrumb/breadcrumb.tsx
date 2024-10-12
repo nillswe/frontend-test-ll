@@ -8,7 +8,7 @@ type Props = {
 
 export const Breadcrumb = ({path}: Props) => {
   return (
-    <div className='text-primary flex w-full gap-1 border-b border-b-gray-200 py-4'>
+    <div className='flex w-full gap-1 border-b border-b-gray-200 py-4 text-primary'>
       <Link href='/' className={merge([!path && 'font-bold'])}>
         Home
       </Link>

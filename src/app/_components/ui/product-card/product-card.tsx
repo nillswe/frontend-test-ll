@@ -27,7 +27,7 @@ export const ProductCard = ({product}: Props) => {
           alt={product.name}
         />
 
-        <p className='mt-3'>{product.name}</p>
+        <h1 className='mt-3'>{product.name}</h1>
       </header>
       <div className='mt-1'>
         <div className='flex items-center gap-1'>
