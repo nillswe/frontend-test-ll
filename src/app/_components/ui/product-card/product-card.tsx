@@ -1,19 +1,28 @@
-import {Star, StarHalf} from 'lucide-react'
+import {Heart, Star, StarHalf} from 'lucide-react'
 import Image from 'next/image'
 
 import {ProductModel} from '@/types/models/products.model'
-import {formatNumberToCurrency} from '@/utils'
+import {formatNumberToCurrency, merge} from '@/utils'
 
 type Props = {
   product: ProductModel
+  isOnWishList?: boolean
 }
 
-export const ProductCard = ({product}: Props) => {
+export const ProductCard = ({product, isOnWishList}: Props) => {
   const fullStars = Math.floor(product.rating)
   const hasHalfStar = product.rating - fullStars >= 0.5
 
   return (
-    <article className='overflow-hidden rounded-md p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
+    <article className='relative overflow-hidden rounded-md p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
+      <div
+        className={merge([
+          'absolute right-3 top-3 rounded-full bg-gray-400 p-2 shadow-md hover:bg-red-400',
+          isOnWishList && 'bg-red-400',
+        ])}>
+        <Heart size={18} className='text-white' />
+      </div>
+
       <header>
         <Image
           src={product.pictureUrl}
@@ -40,7 +49,7 @@ export const ProductCard = ({product}: Props) => {
           <span className='text-sm text-gray-500 line-through'>
             {formatNumberToCurrency(product.oldPrice)}
           </span>
-          <span className='text-primary text-xl'>{formatNumberToCurrency(product.price)}</span>
+          <span className='text-xl text-primary'>{formatNumberToCurrency(product.price)}</span>
         </div>
       </div>
     </article>
