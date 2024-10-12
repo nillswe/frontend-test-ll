@@ -1,18 +1,18 @@
 'use client'
 
 import {Info} from 'lucide-react'
+import {observer} from 'mobx-react-lite'
 import Link from 'next/link'
 
 import {ProductCard} from '@/app/_components/ui'
-import {CACHE_WISHLIST} from '@/config/tokens'
-import {localCache} from '@/services/local-cache/local-cache'
-import {ProductModel} from '@/types/models/products.model'
+import {useRootStore} from '@/app/_hooks/use-root-store'
 
-export default function Page() {
-  const products = localCache.get<ProductModel[]>(CACHE_WISHLIST) ?? []
+const Page = observer(() => {
+  const {wishlistStore} = useRootStore()
+  const products = wishlistStore.wishlist
 
   return (
-    <div className='mt-5  w-full'>
+    <div className='mt-5 w-full'>
       {products.length === 0 && (
         <div className='flex w-full flex-col items-center gap-4'>
           <p
@@ -37,4 +37,5 @@ export default function Page() {
       )}
     </div>
   )
-}
+})
+export default Page

@@ -1,23 +1,23 @@
-import {CACHE_WISHLIST} from '@/config/tokens'
-import {localCache} from '@/services/local-cache/local-cache'
+import {useRootStore} from '@/app/_hooks/use-root-store'
 import {ProductModel} from '@/types/models/products.model'
 
 export const useProductCard = () => {
-  const addProductToWishlist = (product: ProductModel) => {
-    const cachedProducts = localCache.get<ProductModel[]>(CACHE_WISHLIST) ?? []
+  const {wishlistStore} = useRootStore()
 
-    localCache.set(CACHE_WISHLIST, [...cachedProducts, product])
+  const addProductToWishlist = (product: ProductModel) => {
+    const cachedProducts = wishlistStore.wishlist
+    wishlistStore.setWishlist([...cachedProducts, product])
   }
 
   const removeProductFromWishlist = (product: ProductModel) => {
-    const cachedProducts = localCache.get<ProductModel[]>(CACHE_WISHLIST) ?? []
+    const cachedProducts = wishlistStore.wishlist
 
     const filteredProducts = cachedProducts.filter(({id}) => id !== product.id)
-    localCache.set(CACHE_WISHLIST, filteredProducts)
+    wishlistStore.setWishlist(filteredProducts)
   }
 
   const checkIsOnWishlist = (productId: number) => {
-    const cachedProducts = localCache.get<ProductModel[]>(CACHE_WISHLIST) ?? []
+    const cachedProducts = wishlistStore.wishlist
     if (!cachedProducts) return false
 
     return cachedProducts.some(product => product.id === productId)
