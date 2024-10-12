@@ -1,4 +1,4 @@
-import {HttpMethods} from './types'
+import {HttpMethods, HttpResponse} from './types'
 
 export class FetchHttpClient {
   constructor(
@@ -6,7 +6,11 @@ export class FetchHttpClient {
     private token?: string,
   ) {}
 
-  private async request<T = any>(path: string, method: HttpMethods, body?: any) {
+  private async request<T = any>(
+    path: string,
+    method: HttpMethods,
+    body?: any,
+  ): Promise<HttpResponse<T>> {
     const res = await fetch(`${this.basePath}${path}`, {
       method: method,
       body: body,
