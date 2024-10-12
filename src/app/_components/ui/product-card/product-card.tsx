@@ -1,27 +1,22 @@
-import {Heart, Star, StarHalf} from 'lucide-react'
+import {Star, StarHalf} from 'lucide-react'
 import Image from 'next/image'
 
+import {WishlistButton} from '@/app/_components/ui/product-card/_components'
 import {ProductModel} from '@/types/models/products.model'
-import {formatNumberToCurrency, merge} from '@/utils'
+import {formatNumberToCurrency} from '@/utils'
 
 type Props = {
   product: ProductModel
   isOnWishList?: boolean
 }
 
-export const ProductCard = ({product, isOnWishList}: Props) => {
+export const ProductCard = ({product}: Props) => {
   const fullStars = Math.floor(product.rating)
   const hasHalfStar = product.rating - fullStars >= 0.5
 
   return (
     <article className='relative overflow-hidden rounded-md p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
-      <div
-        className={merge([
-          'absolute right-3 top-3 rounded-full bg-gray-400 p-2 shadow-md hover:bg-red-400',
-          isOnWishList && 'bg-red-400',
-        ])}>
-        <Heart size={18} className='text-white' />
-      </div>
+      <WishlistButton product={product} />
 
       <header>
         <Image
