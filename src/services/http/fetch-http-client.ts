@@ -6,7 +6,7 @@ export class FetchHttpClient {
     private token?: string,
   ) {}
 
-  private async request(path: string, method: HttpMethods, body?: any) {
+  private async request<T = any>(path: string, method: HttpMethods, body?: any) {
     const res = await fetch(`${this.basePath}${path}`, {
       method: method,
       body: body,
@@ -19,20 +19,20 @@ export class FetchHttpClient {
 
     return {
       status: res.status,
-      body: jsonRes,
+      body: jsonRes as T,
     }
   }
 
-  public async get(path: string) {
-    return await this.request(path, 'GET')
+  public async get<T = any>(path: string) {
+    return await this.request<T>(path, 'GET')
   }
-  public async post(path: string, body?: any) {
-    return await this.request(path, 'POST', body)
+  public async post<T = any>(path: string, body?: any) {
+    return await this.request<T>(path, 'POST', body)
   }
-  public async put(path: string, body?: any) {
-    return await this.request(path, 'PUT', body)
+  public async put<T = any>(path: string, body?: any) {
+    return await this.request<T>(path, 'PUT', body)
   }
-  public async delete(path: string) {
-    return await this.request(path, 'DELETE')
+  public async delete<T = any>(path: string) {
+    return await this.request<T>(path, 'DELETE')
   }
 }

@@ -1,8 +1,10 @@
 import {Star} from 'lucide-react'
 import Image from 'next/image'
 
+import {ProductModel} from '@/types/models/products.model'
+
 type Props = {
-  product: any
+  product: ProductModel
 }
 
 export const ProductCard = ({product}: Props) => {

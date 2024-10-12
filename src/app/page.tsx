@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <section className='mb-10 mt-5 grid w-full grid-cols-4 gap-5'>
       {products.map(product => {
-        return <ProductCard key={product.id} product={product as any} />
+        return <ProductCard key={product.id} product={product} />
       })}
     </section>
   )
