@@ -15,10 +15,10 @@ export const ProductCard = ({product}: Props) => {
   const hasHalfStar = product.rating - fullStars >= 0.5
 
   return (
-    <article className='relative overflow-hidden rounded-md p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
+    <article className='relative flex flex-col overflow-hidden rounded-md bg-white p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
       <WishlistButton product={product} />
 
-      <header>
+      <header className='mb-1'>
         <Image
           src={product.pictureUrl}
           width={300}
@@ -29,7 +29,7 @@ export const ProductCard = ({product}: Props) => {
 
         <h1 className='mt-3'>{product.name}</h1>
       </header>
-      <div className='mt-1'>
+      <div className='mt-auto flex flex-col '>
         <div className='flex items-center gap-1'>
           <span className='flex'>
             {Array.from({length: fullStars}, (_, i) => i + 1).map(key => {
