@@ -3,7 +3,7 @@
 import {X, Heart} from 'lucide-react'
 import {observer} from 'mobx-react-lite'
 
-import {useProductCard} from '@/app/_components/ui/product-card/_hooks/use-product-card'
+import {useRootStore} from '@/app/_hooks/use-root-store'
 import {ProductModel} from '@/types/models/products.model'
 import {merge} from '@/utils'
 
@@ -12,10 +12,12 @@ type Props = {
 }
 
 export const WishlistButton = observer(({product}: Props) => {
-  const {addProductToWishlist, removeProductFromWishlist, checkIsOnWishlist} = useProductCard()
-  const isOnWishlist = checkIsOnWishlist(product.id)
+  const {wishlistStore} = useRootStore()
+  const isOnWishlist = wishlistStore.checkIsOnWishlist(product.id)
 
-  const toggleWishlist = isOnWishlist ? removeProductFromWishlist : addProductToWishlist
+  const toggleWishlist = isOnWishlist
+    ? wishlistStore.removeProductFromWishlist.bind(wishlistStore)
+    : wishlistStore.addProductToWishlist.bind(wishlistStore)
 
   return (
     <div

@@ -20,4 +20,18 @@ export class WishlistStore {
   public setWishlist(wishlist: ProductModel[]) {
     this.wishlist = wishlist
   }
+
+  public addProductToWishlist(product: ProductModel) {
+    this.setWishlist([...this.wishlist, product])
+  }
+
+  public removeProductFromWishlist(product: ProductModel) {
+    const filteredProducts = this.wishlist.filter(({id}) => id !== product.id)
+    this.setWishlist(filteredProducts)
+  }
+
+  public checkIsOnWishlist(productId: number) {
+    if (!this.wishlist) return false
+    return this.wishlist.some(product => product.id === productId)
+  }
 }
