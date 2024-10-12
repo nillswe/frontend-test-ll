@@ -2,22 +2,22 @@ import {Star} from 'lucide-react'
 import Image from 'next/image'
 
 type Props = {
-  product?: string // TODO: change later
+  product: any
 }
 
-export const ProductCard = ({}: Props) => {
+export const ProductCard = ({product}: Props) => {
   return (
     <article className='overflow-hidden rounded-md p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
       <header>
         <Image
-          src='/temp/product.webp'
+          src={product.pictureUrl}
           width={300}
           height={300}
           className='rounded-md object-cover'
-          alt='Product'
+          alt={product.name}
         />
 
-        <p className='mt-3'>Bermuda Mizuno Root Mesh Masculina</p>
+        <p className='mt-3'>{product.name}</p>
       </header>
       <div className='mt-1'>
         <div className='flex items-center gap-1'>
@@ -28,12 +28,12 @@ export const ProductCard = ({}: Props) => {
             <Star className='text-yellow-500' fill='#ebb305' size={18} />
             <Star className='text-yellow-500' fill='#ebb305' size={18} />
           </span>
-          <span>5.0</span>
+          <span>{product.rating}</span>
         </div>
 
         <div className='mt-2 flex flex-col'>
-          <span className='text-sm text-gray-500 line-through'>R$ 299,99</span>
-          <span className='text-primary text-xl'>R$ 160,00</span>
+          <span className='text-sm text-gray-500 line-through'>{product.oldPrice}</span>
+          <span className='text-primary text-xl'>{product.price}</span>
         </div>
       </div>
     </article>

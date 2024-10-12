@@ -1,10 +1,13 @@
 import {ProductCard} from '@/app/_components/ui'
+import {getHomeProducts} from '@/data/server/products.api'
 
-export default function Home() {
+export default async function Home() {
+  const products = await getHomeProducts()
+
   return (
     <section className='mb-10 mt-5 grid w-full grid-cols-4 gap-5'>
-      {Array.from({length: 8}).map((product, index) => {
-        return <ProductCard key={index} product={product as string} />
+      {products.map(product => {
+        return <ProductCard key={product.id} product={product as any} />
       })}
     </section>
   )
