@@ -1,4 +1,4 @@
-import {Star} from 'lucide-react'
+import {Star, StarHalf} from 'lucide-react'
 import Image from 'next/image'
 
 import {ProductModel} from '@/types/models/products.model'
@@ -9,6 +9,9 @@ type Props = {
 }
 
 export const ProductCard = ({product}: Props) => {
+  const fullStars = Math.floor(product.rating)
+  const hasHalfStar = product.rating - fullStars >= 0.5
+
   return (
     <article className='overflow-hidden rounded-md p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
       <header>
@@ -25,11 +28,10 @@ export const ProductCard = ({product}: Props) => {
       <div className='mt-1'>
         <div className='flex items-center gap-1'>
           <span className='flex'>
-            <Star className='text-yellow-500' fill='#ebb305' size={18} />
-            <Star className='text-yellow-500' fill='#ebb305' size={18} />
-            <Star className='text-yellow-500' fill='#ebb305' size={18} />
-            <Star className='text-yellow-500' fill='#ebb305' size={18} />
-            <Star className='text-yellow-500' fill='#ebb305' size={18} />
+            {Array.from({length: fullStars}).map((_, index) => {
+              return <Star key={index} className='text-yellow-500' fill='#ebb305' size={18} />
+            })}
+            {hasHalfStar && <StarHalf className='text-yellow-500' fill='#ebb305' size={18} />}
           </span>
           <span>{product.rating}</span>
         </div>
