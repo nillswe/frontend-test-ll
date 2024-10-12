@@ -1,23 +1,25 @@
+'use client'
+
 import Link from 'next/link'
+import {usePathname} from 'next/navigation'
 
 import {merge} from '@/utils'
 
-type Props = {
-  path?: string
-}
+export const Breadcrumb = () => {
+  const pathname = usePathname()
+  const cleanPathName = pathname ? pathname.replace('/', '') : null
 
-export const Breadcrumb = ({path}: Props) => {
   return (
     <div className='flex w-full gap-1 border-b border-b-gray-200 py-4 text-primary'>
-      <Link href='/' className={merge([!path && 'font-bold'])}>
+      <Link href='/' className={merge([!cleanPathName && 'font-bold'])}>
         Home
       </Link>
 
-      {path && (
+      {cleanPathName && (
         <>
           <span>/</span>
-          <Link href={path} className={merge([path && 'font-bold'])}>
-            {path}
+          <Link href={pathname} className={merge(['capitalize', cleanPathName && 'font-bold'])}>
+            {cleanPathName}
           </Link>
         </>
       )}
