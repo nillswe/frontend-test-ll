@@ -38,6 +38,7 @@ describe('<ProductCard />', () => {
     const ratingStarsAmount = ratingIconsContainer.childNodes.length
     const oldPrice = await sut.getByTestId('product-card-old-price')
     const price = await sut.getByTestId('product-card-price')
+    const wishlistButton = await sut.getByTestId('toggle-wishlist-button')
 
     expect(decodeURIComponent(image.src)).toContain(defaultProps.pictureUrl)
     expect(name).toBeVisible()
@@ -45,6 +46,7 @@ describe('<ProductCard />', () => {
     expect(ratingStarsAmount).toBe(Math.round(defaultProps.rating))
     expect(oldPrice.textContent).toBe(formatNumberToCurrency(defaultProps.oldPrice))
     expect(price.textContent).toBe(formatNumberToCurrency(defaultProps.price))
+    expect(wishlistButton).toBeVisible()
   })
 
   it('Should perform toggle wishlist on click on the button', async () => {
