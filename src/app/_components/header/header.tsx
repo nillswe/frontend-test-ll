@@ -2,6 +2,8 @@ import {Heart, User} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import {merge} from '@/utils'
+
 export const Header = () => {
   return (
     <header className='flex h-20 w-full items-center bg-primary px-3'>
@@ -17,7 +19,11 @@ export const Header = () => {
 
           <button className='group relative rounded-md p-3 hover:bg-purple-900'>
             <User />
-            <div className='absolute right-0 top-12 z-10 hidden w-[200px] rounded-md bg-white p-3 text-black shadow-md group-hover:block'>
+            <div
+              className={merge([
+                'absolute top-12 z-10 hidden rounded-md bg-white p-3 text-black shadow-md group-hover:block md:right-0 md:w-[200px]',
+                '-right-3 w-screen',
+              ])}>
               <ul className='flex flex-col items-start gap-1'>
                 <li className='flex w-full'>
                   <Link
