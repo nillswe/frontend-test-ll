@@ -17,7 +17,7 @@ export class WishlistStore {
     })
   }
 
-  public setWishlist(wishlist: ProductModel[]) {
+  private setWishlist(wishlist: ProductModel[]) {
     this.wishlist = wishlist
   }
 

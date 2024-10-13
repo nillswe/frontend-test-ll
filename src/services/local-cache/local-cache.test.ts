@@ -1,0 +1,71 @@
+import {LocalCache} from '@/services/local-cache/local-cache'
+import {localStorageMock} from '@/services/local-cache/mocks/local-storage.mock'
+import {faker} from '@faker-js/faker'
+
+Object.defineProperty(window, 'localStorage', {value: localStorageMock})
+
+const makeSut = () => {
+  const sut = new LocalCache()
+
+  return {
+    sut,
+  }
+}
+
+describe('LocalCache', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
+  describe('SET', () => {
+    it('should set data in cache properly', () => {
+      const fakeKey = faker.word.words(1)
+      const fakeData = {
+        property1: faker.commerce.productName(),
+        property2: faker.commerce.productDescription(),
+      }
+
+      const {sut} = makeSut()
+
+      sut.set(fakeKey, fakeData)
+
+      expect(localStorage.setItem).toHaveBeenCalledWith(fakeKey, JSON.stringify(fakeData))
+    })
+  })
+
+  describe('GET', () => {
+    it('should return undefined', () => {
+      const fakeKey = faker.word.words(1)
+      const {sut} = makeSut()
+
+      const res = sut.get(fakeKey)
+
+      expect(res).toBe(null)
+    })
+
+    it('should return some data', () => {
+      const fakeKey = faker.word.words(1)
+      const fakeData = {
+        property1: faker.commerce.productName(),
+        property2: faker.commerce.productDescription(),
+      }
+      const {sut} = makeSut()
+      sut.set(fakeKey, fakeData)
+
+      const res = sut.get(fakeKey)
+
+      expect(res).toStrictEqual(fakeData)
+    })
+
+    it('should return null when window is not defined', () => {
+      const fakeKey = faker.word.words(1)
+      Object.defineProperty(global, 'window', {value: undefined})
+
+      const {sut} = makeSut()
+
+      const res = sut.get(fakeKey)
+
+      expect(res).toBe(null)
+    })
+  })
+})

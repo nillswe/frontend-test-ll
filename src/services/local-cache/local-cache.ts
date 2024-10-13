@@ -8,8 +8,10 @@ export class LocalCache {
   get<K>(key: string) {
     if (typeof window !== 'undefined') {
       const response = localStorage?.getItem(key) as string
+      if (response === undefined) return null
       return JSON.parse(response) as K
     }
+
     return null
   }
 
