@@ -11,7 +11,7 @@ const RootContext = createContext<RootStore | null>(null)
 
 type Props = {
   children: ReactNode
-  wishlist: ProductModel[]
+  wishlist?: ProductModel[]
 }
 
 export const RootStoreProvider = ({children, wishlist}: Props) => {
