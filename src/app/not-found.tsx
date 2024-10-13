@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import {merge} from '@/utils'
 
-const NotFoundPage = async () => {
+const NotFoundPage = () => {
   return (
     <main className={merge(['flex h-[100%] w-full flex-1 flex-wrap  justify-center'])}>
       <div className='mx-auto max-w-screen-xl px-4 pb-8 lg:px-6 lg:pb-16'>
