@@ -21,7 +21,7 @@ describe('FetchHttpClient', () => {
   })
 
   describe('GET', () => {
-    it('Should call method properly with the correct response', () => {
+    it('Should call GET method properly with the correct response', () => {
       const {sut, basePath, fakeToken} = makeSut()
       const getMock = sut.get('/example')
 
@@ -38,7 +38,7 @@ describe('FetchHttpClient', () => {
   })
 
   describe('POST', () => {
-    it('Should call method properly with the correct response', () => {
+    it('Should call POST method properly with the correct response', () => {
       const {sut, basePath, fakeToken} = makeSut()
       const postMock = sut.post('/example', {data: true})
 
@@ -55,7 +55,7 @@ describe('FetchHttpClient', () => {
   })
 
   describe('PUT', () => {
-    it('Should call method properly with the correct response', () => {
+    it('Should call PUT method properly with the correct response', () => {
       const {sut, basePath, fakeToken} = makeSut()
       const putMock = sut.put('/example', {data: true})
 
@@ -72,7 +72,7 @@ describe('FetchHttpClient', () => {
   })
 
   describe('DELETE', () => {
-    it('Should call method properly with the correct response', () => {
+    it('Should call DELETE method properly with the correct response', () => {
       const {sut, basePath, fakeToken} = makeSut()
       const deleteMock = sut.delete('/example')
 
