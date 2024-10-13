@@ -1,5 +1,6 @@
 import {Star, StarHalf} from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import {WishlistButton} from '@/app/_components/ui/product-card/_components'
 import {ProductModel} from '@/types/models/products.model'
@@ -15,19 +16,23 @@ export const ProductCard = ({product}: Props) => {
   const hasHalfStar = product.rating - fullStars >= 0.5
 
   return (
-    <article className='relative flex flex-col overflow-hidden rounded-md bg-white p-3 shadow-md hover:cursor-pointer hover:shadow-lg'>
+    <article className='relative flex flex-col overflow-hidden rounded-md bg-white p-3 shadow-md hover:shadow-lg'>
       <WishlistButton product={product} />
 
       <header className='mb-1'>
-        <Image
-          src={product.pictureUrl}
-          width={300}
-          height={300}
-          className='w-full rounded-md object-cover'
-          alt={product.name}
-        />
+        <Link href={`/${product.id}`}>
+          <Image
+            src={product.pictureUrl}
+            width={300}
+            height={300}
+            className='w-full rounded-md object-cover'
+            alt={product.name}
+          />
+        </Link>
 
-        <h1 className='mt-3'>{product.name}</h1>
+        <h1 className='mt-3'>
+          <Link href={`/${product.id}`}>{product.name}</Link>
+        </h1>
       </header>
       <div className='mt-auto flex flex-col '>
         <div className='flex items-center gap-1'>

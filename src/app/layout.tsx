@@ -20,9 +20,9 @@ export default function RootLayout({
     <html lang='pt-br' className='light'>
       <body className={roboto.className}>
         <Providers>
-          <main className='flex h-auto w-full flex-col'>
+          <main className='flex min-h-screen w-full flex-col'>
             <Header />
-            <div className='mx-auto flex w-full max-w-[1300px] flex-col justify-between px-3'>
+            <div className='mx-auto flex w-full max-w-[1300px] flex-1 flex-col justify-start px-3 '>
               <Breadcrumb />
               {children}
             </div>
