@@ -31,7 +31,7 @@ export class WishlistStore {
   }
 
   public checkIsOnWishlist(productId: number) {
-    if (!this.wishlist) return false
+    if (this.wishlist.length === 0) return false
     return this.wishlist.some(product => product.id === productId)
   }
 }
