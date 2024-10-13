@@ -36,7 +36,7 @@ export const ProductCard = ({product}: Props) => {
       </header>
       <div className='mt-auto flex flex-col '>
         <div className='flex items-center gap-1'>
-          <span className='flex'>
+          <span className='flex' data-testid='rating-stars'>
             {Array.from({length: fullStars}, (_, i) => i + 1).map(key => {
               return <Star key={key} className='text-yellow-500' fill='#ebb305' size={18} />
             })}
@@ -46,10 +46,12 @@ export const ProductCard = ({product}: Props) => {
         </div>
 
         <div className='mt-2 flex flex-col'>
-          <span className='text-sm text-gray-500 line-through'>
+          <span className='text-sm text-gray-500 line-through' data-testid='product-card-old-price'>
             {formatNumberToCurrency(product.oldPrice)}
           </span>
-          <span className='text-xl text-primary'>{formatNumberToCurrency(product.price)}</span>
+          <span className='text-xl text-primary' data-testid='product-card-price'>
+            {formatNumberToCurrency(product.price)}
+          </span>
         </div>
       </div>
     </article>
