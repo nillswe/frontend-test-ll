@@ -1,4 +1,6 @@
-Projeto criado para o teste de frontend no Luizalabs
+Projeto criado para o teste de frontend no Luizalabs.
+
+Projeto feito usando Nextjs
 
 ![Imagem do projeto](./project.png)
 
@@ -31,3 +33,13 @@ bun dev
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) no browser para ver o projeto rodando.
+
+## Testes
+
+Para os testes presentes no projeto, execute o comando:
+
+```bash
+yarn test
+# or
+yarn test:coverage
+```
