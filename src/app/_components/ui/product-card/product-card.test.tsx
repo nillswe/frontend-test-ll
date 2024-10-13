@@ -3,7 +3,7 @@ import {RootStoreProvider} from '@/app/_hooks/use-root-store'
 import {ProductModel} from '@/types/models/products.model'
 import {formatNumberToCurrency} from '@/utils'
 import {faker} from '@faker-js/faker'
-import {render} from '@testing-library/react'
+import {fireEvent, render} from '@testing-library/react'
 
 const makeSut = (product?: ProductModel) => {
   const defaultProps: ProductModel = {
@@ -45,5 +45,20 @@ describe('<ProductCard />', () => {
     expect(ratingStarsAmount).toBe(Math.round(defaultProps.rating))
     expect(oldPrice.textContent).toBe(formatNumberToCurrency(defaultProps.oldPrice))
     expect(price.textContent).toBe(formatNumberToCurrency(defaultProps.price))
+  })
+
+  it('Should perform toggle wishlist on click on the button', async () => {
+    const {sut} = makeSut()
+    const wishlistButton = await sut.getByTestId('toggle-wishlist-button')
+
+    expect(wishlistButton.children[0].id).toBe('heart-icon')
+
+    fireEvent.click(wishlistButton)
+
+    expect(wishlistButton.children[0].id).toBe('x-icon')
+
+    fireEvent.click(wishlistButton)
+
+    expect(wishlistButton.children[0].id).toBe('heart-icon')
   })
 })

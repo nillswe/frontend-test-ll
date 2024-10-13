@@ -21,13 +21,14 @@ export const WishlistButton = observer(({product}: Props) => {
 
   return (
     <div
+      data-testid='toggle-wishlist-button'
       className={merge([
         'absolute right-3 top-3 rounded-full bg-gray-400 p-2 shadow-md hover:bg-red-400',
         'text-white',
         isOnWishlist && 'bg-red-400',
       ])}
       onClick={() => toggleWishlist(product)}>
-      {isOnWishlist ? <X size={18} /> : <Heart size={18} />}
+      {isOnWishlist ? <X size={18} id='x-icon' /> : <Heart size={18} id='heart-icon' />}
     </div>
   )
 })
