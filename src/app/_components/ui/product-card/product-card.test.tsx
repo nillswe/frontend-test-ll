@@ -4,6 +4,7 @@ import {ProductModel} from '@/types/models/products.model'
 import {formatNumberToCurrency} from '@/utils'
 import {faker} from '@faker-js/faker'
 import {fireEvent, render} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 const makeSut = (product?: ProductModel) => {
   const defaultProps: ProductModel = {
@@ -24,6 +25,7 @@ const makeSut = (product?: ProductModel) => {
   return {
     defaultProps,
     sut,
+    user: userEvent.setup(),
   }
 }
 
@@ -62,5 +64,16 @@ describe('<ProductCard />', () => {
     fireEvent.click(wishlistButton)
 
     expect(wishlistButton.children[0].id).toBe('heart-icon')
+  })
+
+  it('Should all links point to the right page', async () => {
+    const {sut, defaultProps} = makeSut()
+
+    const links = (await sut.getAllByRole('link')) as HTMLLinkElement[]
+    const imageLink = links[0]
+    const nameLink = links[1]
+
+    expect(imageLink.href).toContain(`/${defaultProps.id}`)
+    expect(nameLink.href).toContain(`/${defaultProps.id}`)
   })
 })
