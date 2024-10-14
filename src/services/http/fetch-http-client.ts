@@ -23,6 +23,7 @@ export class FetchHttpClient {
       })
 
       if (!response.ok) throw await this.adaptError(response)
+
       return await this.adaptResponse<T>(response)
     } catch (error) {
       throw error
@@ -32,9 +33,9 @@ export class FetchHttpClient {
   private async adaptError(response: Response) {
     try {
       const json = await response.json()
-      return {status: response.status, body: json}
+      return {status: response.status, error: json}
     } catch (error) {
-      return {status: response.status, body: null}
+      return {status: response.status, error: null}
     }
   }
 
