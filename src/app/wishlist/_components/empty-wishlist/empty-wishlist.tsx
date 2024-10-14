@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const EmptyWishlist = () => {
   return (
-    <div className='flex w-full flex-col items-center gap-4'>
+    <div className='flex w-full flex-col items-center gap-4' data-testid='empty-wishlist-container'>
       <p
         role='alert'
         className='mx-auto flex w-full max-w-3xl items-center gap-2 rounded-md bg-blue-300 p-4'>

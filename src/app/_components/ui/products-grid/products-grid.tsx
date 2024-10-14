@@ -10,6 +10,7 @@ type Props = {
 export const ProductsGrid = ({children, className}: Props) => {
   return (
     <section
+      data-testid='products-grid-container'
       className={merge([
         'mb-10 grid w-full grid-cols-1 gap-5',
         'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
