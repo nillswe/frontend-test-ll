@@ -16,8 +16,8 @@ describe('<StarsRating />', () => {
   it('Should render with correct amount of stars', async () => {
     const {sut, rating} = makeSut()
 
-    const ratingText = await sut.getByText(rating)
-    const ratingIconsContainer = await sut.getByTestId('stars-rating')
+    const ratingText = sut.getByText(rating)
+    const ratingIconsContainer = sut.getByTestId('stars-rating')
     const ratingStarsAmount = ratingIconsContainer.childNodes.length
 
     expect(ratingText).toBeVisible()
