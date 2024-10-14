@@ -20,16 +20,16 @@ Para
 NEXT_PUBLIC_API_URL="http://localhost:3001"
 ```
 
+Instale as dependências rodando o seguindo:
+
+```bash
+yarn install
+```
+
 Para rodar o servidor de dev, execute o comando:
 
 ```bash
-npm run dev
-# or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) no browser para ver o projeto rodando.
