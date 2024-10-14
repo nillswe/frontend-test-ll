@@ -9,3 +9,12 @@ export const getHomeProducts = async () => {
     return []
   }
 }
+
+export const getProductDetail = async (slug: string) => {
+  try {
+    const {body: product} = await serverHttp.api.get<ProductModel | null>(`/products/${slug}`)
+    return product
+  } catch (error) {
+    return null
+  }
+}
