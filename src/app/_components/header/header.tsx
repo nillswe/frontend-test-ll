@@ -12,7 +12,7 @@ export const Header = () => {
           <Image src='/assets/brand/netshoes.svg' width={160} height={25} alt='Netshoes logo' />
         </Link>
         <div className='flex items-center gap-10 text-white'>
-          <Link href='wishlist' className='flex gap-1'>
+          <Link href='/wishlist' className='flex gap-1'>
             <Heart />
             <span className=''>Wishlist</span>
           </Link>

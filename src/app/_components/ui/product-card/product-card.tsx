@@ -34,6 +34,7 @@ export const ProductCard = ({product}: Props) => {
           <Link href={`/product/${product.id}`}>{product.name}</Link>
         </h1>
       </header>
+
       <div className='mt-auto flex flex-col '>
         <div className='flex items-center gap-1'>
           <span className='flex' data-testid='rating-stars'>
