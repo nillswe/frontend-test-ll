@@ -1,7 +1,6 @@
 import {WishlistStore} from '@/app/_stores/wishlist-store'
 import {mockProduct} from '@/mocks/product.mock'
 import {ProductModel} from '@/types/models/products.model'
-import exp from 'constants'
 
 const makeSut = (defaultProducts?: ProductModel[]) => {
   const sut = new WishlistStore(defaultProducts)
