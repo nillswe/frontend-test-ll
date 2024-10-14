@@ -2,13 +2,20 @@
 
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import {Fragment} from 'react'
+import {Fragment, useMemo} from 'react'
 
 import {merge} from '@/utils'
 
 export const Breadcrumb = () => {
   const pathname = usePathname()
-  const paths = pathname.slice(1, pathname.length).split('/')
+  const paths = useMemo(
+    () =>
+      pathname
+        .slice(1, pathname.length)
+        .split('/')
+        .filter(e => e),
+    [pathname],
+  )
 
   return (
     <div
@@ -18,16 +25,17 @@ export const Breadcrumb = () => {
         Home
       </Link>
 
-      {paths.map(path => {
-        return (
-          <Fragment key={path}>
-            <span>/</span>
-            <Link href={pathname} className={merge(['capitalize', path && 'font-bold'])}>
-              {path}
-            </Link>
-          </Fragment>
-        )
-      })}
+      {paths.length > 0 &&
+        paths.map(path => {
+          return (
+            <Fragment key={path}>
+              <span>/</span>
+              <Link href={pathname} className={merge(['capitalize', path && 'font-bold'])}>
+                {path}
+              </Link>
+            </Fragment>
+          )
+        })}
     </div>
   )
 }
