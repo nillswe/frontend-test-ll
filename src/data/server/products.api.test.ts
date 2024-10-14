@@ -21,4 +21,11 @@ describe('Products requests', () => {
       expect(sut).toStrictEqual(responseMock)
     })
   })
+
+  it('should fail to get the list of products and return an empty array', async () => {
+    jest.spyOn(serverHttp.api, 'get').mockRejectedValue({body: null, status: 500})
+    const sut = await getHomeProducts()
+
+    expect(sut).toStrictEqual([])
+  })
 })
