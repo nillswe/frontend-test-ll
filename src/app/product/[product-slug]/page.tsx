@@ -19,6 +19,7 @@ const Page = () => {
             height={800}
             alt='temp image'
             className='w-full rounded-md'
+            priority={true}
           />
         </div>
 
@@ -53,9 +54,14 @@ const Page = () => {
           </div>
 
           <div className='mt-5 flex gap-3'>
-            <button className='w-full rounded-md bg-primary px-3 py-4 text-white hover:bg-purple-800'>
-              Comprar
-            </button>
+            <div className='flex w-full flex-col gap-3'>
+              <button className='w-full rounded-md bg-primary px-3 py-4 text-white hover:bg-purple-800'>
+                Comprar
+              </button>
+              <button className='w-full rounded-md bg-gray-500 px-3 py-4 text-white hover:bg-black'>
+                Adicionar ao carrinho
+              </button>
+            </div>
             <div className='relative'>
               <button className='rounded-full bg-gray-300 p-4 hover:bg-red-400'>
                 <Heart size={22} />
