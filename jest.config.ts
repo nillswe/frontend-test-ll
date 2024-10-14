@@ -15,6 +15,10 @@ const config: Config = {
   modulePathIgnorePatterns: ['<rootDir>/node_modules/'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
+  collectCoverage: true,
+  collectCoverageFrom: ['<rootDir>/src/**'],
+  coverageReporters: ['html', 'text'],
+  coverageDirectory: '<rootDir>/coverage',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
