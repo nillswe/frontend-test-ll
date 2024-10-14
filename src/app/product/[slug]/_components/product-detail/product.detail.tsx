@@ -33,10 +33,14 @@ export const ProductDetail = ({product}: Props) => {
         </div>
 
         <div className='mt-5 flex flex-col'>
-          <span className='text-sm text-gray-500 line-through'>
+          <span
+            className='text-sm text-gray-500 line-through'
+            data-testid='product-detail-old-price'>
             {formatNumberToCurrency(product.oldPrice)}
           </span>
-          <span className='text-3xl font-medium'>{formatNumberToCurrency(product.price)}</span>
+          <span className='text-3xl font-medium' data-testid='product-detail-price'>
+            {formatNumberToCurrency(product.price)}
+          </span>
         </div>
 
         <div className='mt-5 flex gap-3'>
