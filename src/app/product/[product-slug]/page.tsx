@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import {ProductCard, ProductsGrid, StarsRating, WishlistButton} from '@/app/_components/ui'
+import {ProductsSlider, StarsRating, WishlistButton} from '@/app/_components/ui'
 import {mockProduct} from '@/mocks/product.mock'
 import {formatNumberToCurrency} from '@/utils'
 import {faker} from '@faker-js/faker'
@@ -58,17 +58,7 @@ const Page = () => {
 
       <div className='border-b-gray-2 00 my-5 border-b'></div>
 
-      <section className='mt-5'>
-        <header className='mb-5'>
-          <h1 className='text-3xl'>Produtos similares</h1>
-        </header>
-
-        <ProductsGrid>
-          {relatedProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </ProductsGrid>
-      </section>
+      <ProductsSlider products={relatedProducts} title='Produtos similares' />
     </div>
   )
 }
