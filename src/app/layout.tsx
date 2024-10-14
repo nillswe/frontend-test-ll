@@ -4,7 +4,7 @@ import {Roboto} from 'next/font/google'
 import './globals.css'
 import {Header, Breadcrumb, Providers} from '@/app/_components'
 
-const roboto = Roboto({subsets: ['latin'], preload: true, weight: ['400', '700']})
+const roboto = Roboto({subsets: ['latin'], preload: true, weight: ['400', '700', '500']})
 
 export const metadata: Metadata = {
   title: 'Luizalabs',

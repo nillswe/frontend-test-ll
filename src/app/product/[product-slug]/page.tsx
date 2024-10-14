@@ -1,7 +1,6 @@
-import {Heart, Star} from 'lucide-react'
 import Image from 'next/image'
 
-import {ProductCard, ProductsGrid} from '@/app/_components/ui'
+import {ProductCard, ProductsGrid, StarsRating, WishlistButton} from '@/app/_components/ui'
 import {mockProduct} from '@/mocks/product.mock'
 import {formatNumberToCurrency} from '@/utils'
 import {faker} from '@faker-js/faker'
@@ -31,26 +30,15 @@ const Page = () => {
             nemo non aliquam officiis facere.
           </p>
 
-          <div className='mt-5 flex items-center gap-2'>
-            <div className=' flex'>
-              <Star size={18} fill='#ebb305' className='text-yellow-500' />
-              <Star size={18} fill='#ebb305' className='text-yellow-500' />
-              <Star size={18} fill='#ebb305' className='text-yellow-500' />
-              <Star size={18} fill='#ebb305' className='text-yellow-500' />
-              <Star size={18} fill='#ebb305' className='text-yellow-500' />
-            </div>
-            <span>5.0</span>
+          <div className='mt-5'>
+            <StarsRating rating={4.5} />
           </div>
 
           <div className='mt-5 flex flex-col'>
-            <span
-              className='text-sm text-gray-500 line-through'
-              data-testid='product-card-old-price'>
+            <span className='text-sm text-gray-500 line-through'>
               {formatNumberToCurrency(200)}
             </span>
-            <span className='text-3xl ' data-testid='product-card-price'>
-              {formatNumberToCurrency(100)}
-            </span>
+            <span className='text-3xl font-medium'>{formatNumberToCurrency(100)}</span>
           </div>
 
           <div className='mt-5 flex gap-3'>
@@ -58,14 +46,13 @@ const Page = () => {
               <button className='w-full rounded-md bg-primary px-3 py-4 text-white hover:bg-purple-800'>
                 Comprar
               </button>
+
               <button className='w-full rounded-md bg-gray-500 px-3 py-4 text-white hover:bg-black'>
                 Adicionar ao carrinho
               </button>
             </div>
             <div className='relative'>
-              <button className='rounded-full bg-gray-300 p-4 hover:bg-red-400'>
-                <Heart size={22} />
-              </button>
+              <WishlistButton product={{} as any} size='lg' />
             </div>
           </div>
         </div>
