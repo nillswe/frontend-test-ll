@@ -14,7 +14,7 @@ const renderHookWithError = (...args: any[]) => {
   const restore = suppressConsoleError()
 
   try {
-    // @ts-ignore
+    // @ts-expect-error expected param
     renderHook(...args)
   } catch (ex) {
     error = ex

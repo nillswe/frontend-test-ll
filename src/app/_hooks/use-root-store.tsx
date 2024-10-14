@@ -15,12 +15,9 @@ type Props = {
 }
 
 export const RootStoreProvider = ({children, wishlist}: Props) => {
-  if (process.env.NODE_ENV === 'test') {
-    // on automatized tests it should ensure to start a new store on every time the provider is called.
-    rootStore = new RootStore({wishlist})
-  } else {
-    rootStore = rootStore ?? new RootStore({wishlist})
-  }
+  // during tests it should ensure to start a new store on every time the provider is called.
+  if (process.env.NODE_ENV === 'test') rootStore = new RootStore({wishlist})
+  else rootStore = rootStore ?? new RootStore({wishlist})
 
   return <RootContext.Provider value={rootStore}>{children}</RootContext.Provider>
 }
