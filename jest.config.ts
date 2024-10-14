@@ -14,7 +14,7 @@ const config: Config = {
   testEnvironment: 'jsdom',
   modulePathIgnorePatterns: ['<rootDir>/node_modules/'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
-  coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules/', '.mock.ts', '.svg'],
   collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/**'],
   coverageReporters: ['html', 'text'],
