@@ -8,7 +8,7 @@ type Props = {
 
 export const ProductsSlider = ({title, products}: Props) => {
   return (
-    <section>
+    <section data-testid='products-slider-container'>
       <header className='mb-5'>
         <h1 className='text-3xl'>{title}</h1>
       </header>
