@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import {StarsRating} from '@/app/_components/ui'
-import {WishlistButton} from '@/app/_components/ui/product-card/_components'
+import {WishlistButton} from '@/app/_components/ui'
 import {ProductModel} from '@/types/models/products.model'
 import {formatNumberToCurrency} from '@/utils'
 
@@ -14,7 +14,9 @@ type Props = {
 export const ProductCard = ({product}: Props) => {
   return (
     <article className='relative flex flex-col overflow-hidden rounded-md bg-white p-3 shadow-md hover:shadow-lg'>
-      <WishlistButton product={product} />
+      <div className='absolute right-3 top-3'>
+        <WishlistButton product={product} />
+      </div>
 
       <header className='mb-1'>
         <Link href={`/product/${product.id}`}>

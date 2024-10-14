@@ -9,11 +9,18 @@ import {merge} from '@/utils'
 
 type Props = {
   product: ProductModel
+  size?: 'sm' | 'md' | 'lg'
 }
 
-export const WishlistButton = observer(({product}: Props) => {
+export const WishlistButton = observer(({product, size = 'sm'}: Props) => {
   const {wishlistStore} = useRootStore()
   const isOnWishlist = wishlistStore.checkIsOnWishlist(product.id)
+
+  const config = {
+    sm: {icon: 18, padding: 'p-2'},
+    md: {icon: 20, padding: 'p-3'},
+    lg: {icon: 22, padding: 'p-4'},
+  }
 
   const toggleWishlist = isOnWishlist
     ? wishlistStore.removeProductFromWishlist.bind(wishlistStore)
@@ -23,12 +30,16 @@ export const WishlistButton = observer(({product}: Props) => {
     <div
       data-testid='toggle-wishlist-button'
       className={merge([
-        'absolute right-3 top-3 rounded-full bg-gray-400 p-2 shadow-md hover:bg-red-400',
-        'text-white',
+        'rounded-full bg-gray-400 text-white shadow-md hover:bg-red-400',
+        config[size].padding,
         isOnWishlist && 'bg-red-400',
       ])}
       onClick={() => toggleWishlist(product)}>
-      {isOnWishlist ? <X size={18} id='x-icon' /> : <Heart size={18} id='heart-icon' />}
+      {isOnWishlist ? (
+        <X size={config[size].icon} id='x-icon' />
+      ) : (
+        <Heart size={config[size].icon} id='heart-icon' />
+      )}
     </div>
   )
 })
