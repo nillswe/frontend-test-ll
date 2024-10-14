@@ -1,7 +1,7 @@
-import {Star, StarHalf} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import {StarsRating} from '@/app/_components/ui'
 import {WishlistButton} from '@/app/_components/ui/product-card/_components'
 import {ProductModel} from '@/types/models/products.model'
 import {formatNumberToCurrency} from '@/utils'
@@ -12,9 +12,6 @@ type Props = {
 }
 
 export const ProductCard = ({product}: Props) => {
-  const fullStars = Math.floor(product.rating)
-  const hasHalfStar = product.rating - fullStars >= 0.5
-
   return (
     <article className='relative flex flex-col overflow-hidden rounded-md bg-white p-3 shadow-md hover:shadow-lg'>
       <WishlistButton product={product} />
@@ -36,15 +33,7 @@ export const ProductCard = ({product}: Props) => {
       </header>
 
       <div className='mt-auto flex flex-col '>
-        <div className='flex items-center gap-1'>
-          <span className='flex' data-testid='rating-stars'>
-            {Array.from({length: fullStars}, (_, i) => i + 1).map(key => {
-              return <Star key={key} className='text-yellow-500' fill='#ebb305' size={18} />
-            })}
-            {hasHalfStar && <StarHalf className='text-yellow-500' fill='#ebb305' size={18} />}
-          </span>
-          <span>{product.rating}</span>
-        </div>
+        <StarsRating rating={product.rating} />
 
         <div className='mt-2 flex flex-col'>
           <span className='text-sm text-gray-500 line-through' data-testid='product-card-old-price'>

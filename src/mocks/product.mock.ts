@@ -6,7 +6,7 @@ export const mockProduct = (): ProductModel => {
     id: faker.number.int(),
     name: faker.word.words(5),
     pictureUrl: faker.image.urlPicsumPhotos(),
-    rating: faker.number.float({max: 5, min: 1, multipleOf: 0.25}),
+    rating: faker.helpers.arrayElement([0, 1, 1.3, 2, 2.5, 3, 3.6, 4, 4.7, 5]),
     oldPrice: faker.number.float(),
     price: faker.number.float(),
   }
