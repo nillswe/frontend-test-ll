@@ -1,4 +1,4 @@
-import {getHomeProducts, getProductDetail} from '@/data/server/products.api'
+import {getHomeProducts, getProductDetail, getRelatedProducts} from '@/data/server/products.api'
 import {serverHttp} from '@/data/server/server-http'
 import {mockProduct} from '@/mocks/product.mock'
 
@@ -42,6 +42,25 @@ describe('Products requests', () => {
     it('should fail to get the product and return null', async () => {
       jest.spyOn(serverHttp.api, 'get').mockRejectedValue({body: null, status: 500})
       const sut = await getProductDetail('fake-slug')
+
+      expect(sut).toStrictEqual(null)
+    })
+  })
+
+  describe('getRelatedProducts', () => {
+    it('should return a single product', async () => {
+      const responseMock = [mockProduct(), mockProduct()]
+
+      jest.spyOn(serverHttp.api, 'get').mockResolvedValue({body: responseMock, status: 200})
+
+      const sut = await getRelatedProducts()
+
+      expect(sut).toStrictEqual(responseMock)
+    })
+
+    it('should fail to get the product and return null', async () => {
+      jest.spyOn(serverHttp.api, 'get').mockRejectedValue({body: null, status: 500})
+      const sut = await getRelatedProducts()
 
       expect(sut).toStrictEqual(null)
     })
