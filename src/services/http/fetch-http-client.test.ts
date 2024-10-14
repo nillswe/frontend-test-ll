@@ -20,6 +20,43 @@ describe('FetchHttpClient', () => {
     fetch.reset()
   })
 
+  describe('FAIL', () => {
+    it('should throw a custom error when the server responded with a failure. e.g: 5xx, 4xx', () => {
+      const {sut} = makeSut()
+      const requestMock = sut.get('/example')
+
+      fetch.mockResponse({
+        json: () => Promise.resolve('Generic server error'),
+        status: 500,
+        ok: false,
+      })
+
+      expect(requestMock).rejects.toStrictEqual({error: 'Generic server error', status: 500})
+    })
+
+    it('should throw a custom error when the server responded with a failure and the `error` property must be null', () => {
+      const {sut} = makeSut()
+      const requestMock = sut.get('/example')
+
+      fetch.mockResponse({
+        json: () => Promise.reject(false),
+        status: 400,
+        ok: false,
+      })
+
+      expect(requestMock).rejects.toStrictEqual({error: null, status: 400})
+    })
+
+    it(`should throw an generic error when the request couldn't be made`, () => {
+      const {sut} = makeSut()
+      const requestMock = sut.get('/example')
+
+      fetch.mockError('Generic internal error')
+
+      expect(requestMock).rejects.toBe('Generic internal error')
+    })
+  })
+
   describe('GET', () => {
     it('Should call GET method properly with the correct response', () => {
       const {sut, basePath, fakeToken} = makeSut()
