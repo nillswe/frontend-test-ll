@@ -1,7 +1,6 @@
 import {getHomeProducts} from '@/data/server/products.api'
 import {serverHttp} from '@/data/server/server-http'
 import {mockProduct} from '@/mocks/product.mock'
-import {faker} from '@faker-js/faker'
 
 jest.mock('@/data/server/server-http')
 
