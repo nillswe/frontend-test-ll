@@ -11,9 +11,9 @@ export const Breadcrumb = () => {
   const paths = useMemo(
     () =>
       pathname
-        .slice(1, pathname.length)
-        .split('/')
-        .filter(e => e),
+        ?.slice(1, pathname.length)
+        ?.split('/')
+        ?.filter(e => e),
     [pathname],
   )
 
@@ -25,7 +25,7 @@ export const Breadcrumb = () => {
         Home
       </Link>
 
-      {paths.length > 0 &&
+      {paths?.length > 0 &&
         paths.map(path => {
           return (
             <Fragment key={path}>
