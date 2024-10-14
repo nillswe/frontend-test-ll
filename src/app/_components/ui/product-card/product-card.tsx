@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {StarsRating} from '@/app/_components/ui'
-import {WishlistButton} from '@/app/_components/ui'
 import {ProductModel} from '@/types/models/products.model'
 import {formatNumberToCurrency} from '@/utils'
+
+import {StarsRating} from '../stars-rating'
+import {WishlistButton} from '../wishlist-button'
 
 type Props = {
   product: ProductModel
