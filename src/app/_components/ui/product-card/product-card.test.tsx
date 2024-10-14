@@ -48,7 +48,7 @@ describe('<ProductCard />', () => {
     const imageLink = links[0]
     const nameLink = links[1]
 
-    expect(imageLink.href).toContain(`http://localhost/product/${defaultProps.id}`)
-    expect(nameLink.href).toContain(`http://localhost/product/${defaultProps.id}`)
+    expect(imageLink.href).toContain(`http://localhost/product/${defaultProps.slug}`)
+    expect(nameLink.href).toContain(`http://localhost/product/${defaultProps.slug}`)
   })
 })

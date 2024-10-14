@@ -19,7 +19,7 @@ export const ProductCard = ({product}: Props) => {
       </div>
 
       <header className='mb-1'>
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/product/${product.slug}`}>
           <Image
             src={product.pictureUrl}
             width={300}
@@ -30,7 +30,7 @@ export const ProductCard = ({product}: Props) => {
         </Link>
 
         <h1 className='mt-3'>
-          <Link href={`/product/${product.id}`}>{product.name}</Link>
+          <Link href={`/product/${product.slug}`}>{product.name}</Link>
         </h1>
       </header>
 
