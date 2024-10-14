@@ -3,8 +3,7 @@ import Link from 'next/link'
 import {redirect} from 'next/navigation'
 
 import {ProductsSlider, StarsRating, WishlistButton} from '@/app/_components/ui'
-import {getProductDetail} from '@/data/server/products.api'
-import {mockProduct} from '@/mocks/product.mock'
+import {getProductDetail, getRelatedProducts} from '@/data/server/products.api'
 import {formatNumberToCurrency} from '@/utils'
 
 type Props = {
@@ -15,10 +14,9 @@ type Props = {
 
 const Page = async ({params}: Props) => {
   const product = await getProductDetail(params.slug)
+  const relatedProducts = await getRelatedProducts()
 
   if (!product) return redirect('not-found')
-
-  const relatedProducts = [mockProduct(), mockProduct(), mockProduct(), mockProduct()]
 
   return (
     <div className='mt-5 flex w-full flex-col pb-10'>
@@ -62,7 +60,7 @@ const Page = async ({params}: Props) => {
             </div>
 
             <div className='relative'>
-              <WishlistButton product={{} as any} size='lg' />
+              <WishlistButton product={product} size='lg' />
             </div>
           </div>
         </aside>
@@ -70,7 +68,7 @@ const Page = async ({params}: Props) => {
 
       <div className='border-b-gray-2 00 my-5 border-b'></div>
 
-      <ProductsSlider products={relatedProducts} title='Produtos similares' />
+      {relatedProducts && <ProductsSlider products={relatedProducts} title='Produtos similares' />}
     </div>
   )
 }
