@@ -11,7 +11,7 @@ export const EmptyWishlist = () => {
         Sua lista de desejos está vazia. Comece adicionando algo agora mesmo!
       </p>
 
-      <Link href='/' className='rounded-md bg-primary px-6 py-3 text-white'>
+      <Link href='/' className='btn bg-primary'>
         Ir para home page
       </Link>
     </div>

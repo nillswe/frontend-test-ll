@@ -1,10 +1,11 @@
-import {Star, StarHalf} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {WishlistButton} from '@/app/_components/ui/product-card/_components'
 import {ProductModel} from '@/types/models/products.model'
 import {formatNumberToCurrency} from '@/utils'
+
+import {StarsRating} from '../stars-rating'
+import {WishlistButton} from '../wishlist-button'
 
 type Props = {
   product: ProductModel
@@ -12,15 +13,14 @@ type Props = {
 }
 
 export const ProductCard = ({product}: Props) => {
-  const fullStars = Math.floor(product.rating)
-  const hasHalfStar = product.rating - fullStars >= 0.5
-
   return (
     <article className='relative flex flex-col overflow-hidden rounded-md bg-white p-3 shadow-md hover:shadow-lg'>
-      <WishlistButton product={product} />
+      <div className='absolute right-3 top-3'>
+        <WishlistButton product={product} />
+      </div>
 
       <header className='mb-1'>
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/product/${product.slug}`}>
           <Image
             src={product.pictureUrl}
             width={300}
@@ -31,20 +31,12 @@ export const ProductCard = ({product}: Props) => {
         </Link>
 
         <h1 className='mt-3'>
-          <Link href={`/product/${product.id}`}>{product.name}</Link>
+          <Link href={`/product/${product.slug}`}>{product.name}</Link>
         </h1>
       </header>
 
       <div className='mt-auto flex flex-col '>
-        <div className='flex items-center gap-1'>
-          <span className='flex' data-testid='rating-stars'>
-            {Array.from({length: fullStars}, (_, i) => i + 1).map(key => {
-              return <Star key={key} className='text-yellow-500' fill='#ebb305' size={18} />
-            })}
-            {hasHalfStar && <StarHalf className='text-yellow-500' fill='#ebb305' size={18} />}
-          </span>
-          <span>{product.rating}</span>
-        </div>
+        <StarsRating rating={product.rating} />
 
         <div className='mt-2 flex flex-col'>
           <span className='text-sm text-gray-500 line-through' data-testid='product-card-old-price'>

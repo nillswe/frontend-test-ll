@@ -9,3 +9,21 @@ export const getHomeProducts = async () => {
     return []
   }
 }
+
+export const getProductDetail = async (slug: string) => {
+  try {
+    const {body: product} = await serverHttp.api.get<ProductModel | null>(`/products/${slug}`)
+    return product
+  } catch (error) {
+    return null
+  }
+}
+
+export const getRelatedProducts = async () => {
+  try {
+    const {body: products} = await serverHttp.api.get<ProductModel[]>(`/products/related`)
+    return products
+  } catch (error) {
+    return null
+  }
+}

@@ -5,7 +5,7 @@ class ServerHttp {
   public api: FetchHttpClient
 
   constructor() {
-    const fakeBearerToken = '123abc'
+    const fakeBearerToken = 'fake-token-do-not-delete'
     this.api = new FetchHttpClient(API_URL, fakeBearerToken)
   }
 }
