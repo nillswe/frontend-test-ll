@@ -20,7 +20,7 @@ export const ProductCard = ({product}: Props) => {
       <WishlistButton product={product} />
 
       <header className='mb-1'>
-        <Link href={`/${product.id}`}>
+        <Link href={`/product/${product.id}`}>
           <Image
             src={product.pictureUrl}
             width={300}
@@ -31,7 +31,7 @@ export const ProductCard = ({product}: Props) => {
         </Link>
 
         <h1 className='mt-3'>
-          <Link href={`/${product.id}`}>{product.name}</Link>
+          <Link href={`/product/${product.id}`}>{product.name}</Link>
         </h1>
       </header>
       <div className='mt-auto flex flex-col '>
