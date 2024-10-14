@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {redirect} from 'next/navigation'
 
-import {ProductsSlider, StarsRating, WishlistButton} from '@/app/_components/ui'
+import {StarsRating, WishlistButton} from '@/app/_components/ui'
+import {ProductsSlider} from '@/app/product/[slug]/_components'
 import {getProductDetail, getRelatedProducts} from '@/data/server/products.api'
 import {formatNumberToCurrency} from '@/utils'
 
