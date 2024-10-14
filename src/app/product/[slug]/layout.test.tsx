@@ -1,4 +1,4 @@
-import Layout from '@/app/product/[product-slug]/layout'
+import Layout from '@/app/product/[slug]/layout'
 import {render} from '@testing-library/react'
 
 const makeSut = () => {
