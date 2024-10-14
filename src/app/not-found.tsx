@@ -19,7 +19,7 @@ const NotFoundPage = () => {
           <p className='mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl'>
             Página não encontrada
           </p>
-          <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
+          <p role='alert' className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
             Veja o que temos em nossa página inicial
           </p>
           <a href='/' className='rounded-md bg-primary px-6 py-3 text-white'>

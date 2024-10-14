@@ -7,7 +7,7 @@ const makeSut = () => {
       <div>children</div>
     </Layout>,
     {
-      container: document.body, // not recommended
+      container: document.body, // not recommended. Fixed on react 19
     },
   )
 
