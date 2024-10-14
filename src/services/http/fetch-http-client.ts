@@ -10,33 +10,52 @@ export class FetchHttpClient {
     path: string,
     method: HttpMethods,
     body?: any,
+    headers?: any,
   ): Promise<HttpResponse<T>> {
-    const res = await fetch(`${this.basePath}${path}`, {
-      method: method,
-      body: body,
-      headers: {
-        Authorization: `Bearer ${this.token}`,
-      },
-    })
+    try {
+      const response = await fetch(`${this.basePath}${path}`, {
+        method: method,
+        body: body,
+        headers: {
+          ...headers,
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
 
-    const jsonRes = await res.json()
-
-    return {
-      status: res.status,
-      body: jsonRes as T,
+      if (!response.ok) throw await this.adaptError(response)
+      return await this.adaptResponse<T>(response)
+    } catch (error) {
+      throw error
     }
   }
 
-  public async get<T = any>(path: string) {
-    return await this.request<T>(path, 'GET')
+  private async adaptError(response: Response) {
+    try {
+      const json = await response.json()
+      return {status: response.status, body: json}
+    } catch (error) {
+      return {status: response.status, body: null}
+    }
   }
-  public async post<T = any>(path: string, body?: any) {
-    return await this.request<T>(path, 'POST', body)
+
+  private async adaptResponse<T>(response: Response): Promise<HttpResponse<T>> {
+    const json = await response.json()
+    return {
+      status: response.status,
+      body: json as T,
+    }
   }
-  public async put<T = any>(path: string, body?: any) {
-    return await this.request<T>(path, 'PUT', body)
+
+  public async get<T = any>(path: string, headers?: any) {
+    return await this.request<T>(path, 'GET', undefined, headers)
   }
-  public async delete<T = any>(path: string) {
-    return await this.request<T>(path, 'DELETE')
+  public async post<T = any>(path: string, body?: any, headers?: any) {
+    return await this.request<T>(path, 'POST', body, headers)
+  }
+  public async put<T = any>(path: string, body?: any, headers?: any) {
+    return await this.request<T>(path, 'PUT', body, headers)
+  }
+  public async delete<T = any>(path: string, headers?: any) {
+    return await this.request<T>(path, 'DELETE', undefined, headers)
   }
 }
