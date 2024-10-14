@@ -22,8 +22,6 @@ export const getProductDetail = async (slug: string) => {
 export const getRelatedProducts = async () => {
   try {
     const {body: products} = await serverHttp.api.get<ProductModel[]>(`/products/related`)
-    console.log({products})
-
     return products
   } catch (error) {
     return null
