@@ -7,10 +7,12 @@ import {merge} from '@/utils'
 
 export const Breadcrumb = () => {
   const pathname = usePathname()
-  const cleanPathName = pathname ? pathname.replace('/', '') : null
+  const cleanPathName = pathname?.replace('/', '')
 
   return (
-    <div className='flex w-full gap-1 border-b border-b-gray-200 py-4 text-primary'>
+    <div
+      className='flex w-full gap-1 border-b border-b-gray-200 py-4 text-primary'
+      data-testid='breadcrumb-container'>
       <Link href='/' className={merge([!cleanPathName && 'font-bold'])}>
         Home
       </Link>
