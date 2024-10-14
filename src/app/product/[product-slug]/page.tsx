@@ -43,11 +43,9 @@ const Page = () => {
 
           <div className='mt-5 flex gap-3'>
             <div className='flex w-full flex-col gap-3'>
-              <button className='w-full rounded-md bg-primary px-3 py-4 text-white hover:bg-purple-800'>
-                Comprar
-              </button>
+              <button className='btn btn-lg bg-primary hover:bg-purple-800'>Comprar</button>
 
-              <button className='w-full rounded-md bg-gray-500 px-3 py-4 text-white hover:bg-black'>
+              <button className='btn btn-lg bg-gray-500 hover:bg-black'>
                 Adicionar ao carrinho
               </button>
             </div>
