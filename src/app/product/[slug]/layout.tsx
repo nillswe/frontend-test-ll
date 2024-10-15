@@ -8,7 +8,7 @@ export const generateMetadata = async ({params}: {params: {slug: string}}): Prom
 
   return {
     title: product?.name || 'Detalhe do produto',
-    description: product?.details_description,
+    description: product?.details_description ?? '',
   }
 }
 
