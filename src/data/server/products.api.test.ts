@@ -1,6 +1,6 @@
 import {getHomeProducts, getProductDetail, getRelatedProducts} from '@/data/server/products.api'
 import {serverHttp} from '@/data/server/server-http'
-import {mockProduct} from '@/mocks/product.mock'
+import {mockProduct, mockProductResponse} from '@/mocks/product.mock'
 
 jest.mock('@/data/server/server-http')
 
@@ -13,7 +13,9 @@ describe('Products requests', () => {
     it('should return a list of products', async () => {
       const responseMock = [mockProduct()]
 
-      jest.spyOn(serverHttp.api, 'get').mockResolvedValue({body: responseMock, status: 200})
+      jest
+        .spyOn(serverHttp.api, 'get')
+        .mockResolvedValue({body: mockProductResponse(responseMock), status: 200})
 
       const sut = await getHomeProducts()
 
@@ -51,7 +53,9 @@ describe('Products requests', () => {
     it('should return a single product', async () => {
       const responseMock = [mockProduct(), mockProduct()]
 
-      jest.spyOn(serverHttp.api, 'get').mockResolvedValue({body: responseMock, status: 200})
+      jest
+        .spyOn(serverHttp.api, 'get')
+        .mockResolvedValue({body: mockProductResponse(responseMock), status: 200})
 
       const sut = await getRelatedProducts()
 

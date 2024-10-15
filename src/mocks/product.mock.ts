@@ -17,3 +17,12 @@ export const mockProduct = (): ProductModel => {
     visible: faker.number.int(),
   }
 }
+
+export const mockProductResponse = (product: ProductModel[]) => {
+  return {
+    total: 0,
+    pageSize: 0,
+    totalPages: 0,
+    products: product,
+  }
+}
