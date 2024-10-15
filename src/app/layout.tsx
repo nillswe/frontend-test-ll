@@ -1,10 +1,10 @@
 import type {Metadata} from 'next'
-import {Roboto} from 'next/font/google'
+import {Source_Sans_3} from 'next/font/google'
 
 import './globals.css'
 import {Header, Breadcrumb, Providers} from '@/app/_components'
 
-const roboto = Roboto({subsets: ['latin'], preload: true, weight: ['400', '700', '500']})
+const source = Source_Sans_3({subsets: ['latin'], preload: true, weight: ['400', '500', '700']})
 
 export const metadata: Metadata = {
   title: 'Luizalabs',
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br' className='light'>
-      <body className={roboto.className}>
+      <body className={source.className}>
         <Providers>
           <main className='flex min-h-screen w-full flex-col'>
             <Header />
