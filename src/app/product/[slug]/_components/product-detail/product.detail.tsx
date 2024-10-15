@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import {StarsRating, WishlistButton} from '@/app/_components/ui'
 import {ProductModel} from '@/types/models/products.model'
-import {formatNumberToCurrency} from '@/utils'
+import {formatCentsToCurrency} from '@/utils'
 
 type Props = {
   product: ProductModel
@@ -14,7 +14,7 @@ export const ProductDetail = ({product}: Props) => {
     <section className='flex flex-col gap-10 md:flex-row' data-testid='product-detail-container'>
       <div className='w-full md:w-4/6'>
         <Image
-          src={product.pictureUrl}
+          src={product.image}
           width={700}
           height={700}
           alt='temp image'
@@ -26,7 +26,7 @@ export const ProductDetail = ({product}: Props) => {
       <aside className='w-full md:w-2/6'>
         <h1 className='mb-4 text-2xl'>{product.name}</h1>
 
-        <p>{product.description}</p>
+        <p>{product.details_description}</p>
 
         <div className='mt-5'>
           <StarsRating rating={product.rating} />
@@ -36,10 +36,10 @@ export const ProductDetail = ({product}: Props) => {
           <span
             className='text-sm text-gray-500 line-through'
             data-testid='product-detail-old-price'>
-            {formatNumberToCurrency(product.oldPrice)}
+            {formatCentsToCurrency(product.price_in_cents)}
           </span>
           <span className='text-3xl font-medium' data-testid='product-detail-price'>
-            {formatNumberToCurrency(product.price)}
+            {formatCentsToCurrency(product.sale_price_in_cents)}
           </span>
         </div>
 

@@ -1,10 +1,21 @@
-export type ProductModel = {
+export interface ProductModel {
   id: number
-  slug: string
+  code: string
   name: string
-  pictureUrl: string
-  description: string
+  image: string
+  details_description: string
   rating: number
-  oldPrice: number
-  price: number
+  price_in_cents: number
+  sale_price_in_cents: number
+  stock_available: number
+  available: number
+  visible: number
+  details_name: string
+}
+
+export interface ProductsResponse {
+  total: number
+  pageSize: number
+  totalPages: number
+  products: ProductModel[]
 }

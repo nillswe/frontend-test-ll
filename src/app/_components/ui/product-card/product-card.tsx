@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import {ProductModel} from '@/types/models/products.model'
-import {formatNumberToCurrency} from '@/utils'
+import {formatCentsToCurrency} from '@/utils'
 
 import {StarsRating} from '../stars-rating'
 import {WishlistButton} from '../wishlist-button'
@@ -20,9 +20,9 @@ export const ProductCard = ({product}: Props) => {
       </div>
 
       <header className='mb-1'>
-        <Link href={`/product/${product.slug}`}>
+        <Link href={`/product/${product.code}`}>
           <Image
-            src={product.pictureUrl}
+            src={product.image}
             width={300}
             height={300}
             className='w-full rounded-md object-cover'
@@ -31,7 +31,7 @@ export const ProductCard = ({product}: Props) => {
         </Link>
 
         <h1 className='mt-3'>
-          <Link href={`/product/${product.slug}`}>{product.name}</Link>
+          <Link href={`/product/${product.code}`}>{product.name}</Link>
         </h1>
       </header>
 
@@ -40,10 +40,10 @@ export const ProductCard = ({product}: Props) => {
 
         <div className='mt-2 flex flex-col'>
           <span className='text-sm text-gray-500 line-through' data-testid='product-card-old-price'>
-            {formatNumberToCurrency(product.oldPrice)}
+            {formatCentsToCurrency(product.price_in_cents)}
           </span>
           <span className='text-xl text-primary' data-testid='product-card-price'>
-            {formatNumberToCurrency(product.price)}
+            {formatCentsToCurrency(product.sale_price_in_cents)}
           </span>
         </div>
       </div>
